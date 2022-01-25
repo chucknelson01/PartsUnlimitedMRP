@@ -1,0 +1,47 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Gradle@3
+  inputs:
+    gradleWrapperFile: 'src/Backend/IntegrationService/gradlew'
+    workingDirectory: 'src/Backend/IntegrationService'
+    tasks: 'build'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: 1.8
+    gradleOptions: '-Xmx3072m'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
+
+- task: Gradle@3
+  inputs:
+    gradleWrapperFile: 'src/Backend/OrderService/gradlew'
+    workingDirectory: 'src/Backend/OrderService'
+    tasks: 'build'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: 1.8
+    gradleOptions: '-Xmx3072m'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
+
+- task: Gradle@3
+  inputs:
+    gradleWrapperFile: 'src/Clients/gradlew'
+    workingDirectory: 'src/Clients'
+    tasks: 'build'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: 1.8
+    gradleOptions: '-Xmx3072m'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
