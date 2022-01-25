@@ -48,6 +48,6 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\src'
+    SourceFolder: '$(Build.SourcesDirectory)/src'
     Contents: '*/build/libs/!(buildSrc).?ar'
-    TargetFolder: '$(build.artifactstagingdirectory)\drop'
+    TargetFolder: '$(build.artifactstagingdirectory)/drop'
