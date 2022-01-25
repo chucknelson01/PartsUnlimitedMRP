@@ -57,3 +57,13 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)'
     Contents: '**/deploy/SSH-MRP-Artifacts.ps1 **/deploy/deploy_mrp_app.sh **/deploy/MongoRecords.js'
     TargetFolder: '$(build.artifactstagingdirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/drop'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/deploy'
+    ArtifactName: 'deploy'
+    publishLocation: 'Container'
