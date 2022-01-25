@@ -51,3 +51,9 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)/src'
     Contents: '*/build/libs/!(buildSrc).?ar'
     TargetFolder: '$(build.artifactstagingdirectory)/drop'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '**/deploy/SSH-MRP-Artifacts.ps1 **/deploy/deploy_mrp_app.sh **/deploy/MongoRecords.js'
+    TargetFolder: '$(build.artifactstagingdirectory)'
