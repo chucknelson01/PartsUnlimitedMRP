@@ -55,7 +55,10 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/deploy'
-    Contents: '**/deploy/SSH-MRP-Artifacts.ps1 **/deploy/deploy_mrp_app.sh **/deploy/MongoRecords.js'
+    Contents: |
+      *SSH-MRP-Artifacts.ps1 
+      *deploy_mrp_app.sh 
+      *MongoRecords.js
     TargetFolder: '$(build.artifactstagingdirectory)/deploy'
 - task: PublishBuildArtifacts@1
   inputs:
